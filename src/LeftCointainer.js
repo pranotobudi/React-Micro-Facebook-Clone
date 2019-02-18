@@ -8,7 +8,7 @@ import MicroFbProfileFullName from './MicroFbProfileFullName';
 const LeftContainer = () => (
     // <Card
     //     title="My Groups Shortcuts"
-    //     extra={<a href="http://localhost">More</a>}
+    //     extra={<a href={process.env.REACT_APP_DEFAULT_DOMAIN_NAME}>More</a>}
     //     style={{ width: 250 }}>
     //     <p>Django Python Web Framework</p>
     //     <p>React Developers</p>

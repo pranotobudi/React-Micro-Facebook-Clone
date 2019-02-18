@@ -5,6 +5,8 @@ import 'antd/dist/antd.css';  // or 'antd/dist/antd.less'
 import { Button } from 'antd';
 import './index.css';
 import imgSrc from './autumn.jpg'
+
+
 const HomeCoverPhoto = () => (
     <div className='home-cover-photo'>
         <div className='home-cover-photo-button-wrapper'>
@@ -12,7 +14,7 @@ const HomeCoverPhoto = () => (
                 <Button type="primary" icon="camera">Add Cover Photo</Button>
             </div>
             <div>
-                <a href="http://localhost">
+                <a href={process.env.REACT_APP_DEFAULT_DOMAIN_NAME}>
                 <img className="home-cover-photo-profpic" src={imgSrc} alt="imgSrc" />
                 </a>
             </div>

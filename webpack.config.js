@@ -1,4 +1,5 @@
 'use strict';
+const Dotenv = require('dotenv-webpack');
 var path = require('path');
 var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
@@ -162,7 +163,11 @@ module.exports = function (env) {
                         JSON.stringify("production") :
                         JSON.stringify("development")
                 }
-            })
+                // "process.env": dotenv.parsed
+            }),
+            new Dotenv({
+                path: './.env.production', // load this now instead of the ones in '.env'
+            }),
         ],
         /**
          * webpack 自带的开发 server，配合 webpack-dev-server 命令使用

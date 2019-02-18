@@ -66,7 +66,7 @@ class SignupSigninRightContentForm extends React.Component {
         console.log(`password: ${this.state.password}`);
         console.log(`gender: ${this.state.gender}`);
         console.log(`birthday: ${this.state.birthday}`);
-        axios.post('http://127.0.0.1:8000/api/', {
+        axios.post(process.env.REACT_APP_BACKEND_SERVER_API, {
             firstname: this.state.firstname,
             lastname: this.state.lastname,
             email: this.state.email,
