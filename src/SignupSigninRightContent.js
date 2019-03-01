@@ -4,7 +4,7 @@ import SignupSigninRightContentForm from './SignupSigninRightContentForm';
 class SignupSigninRightContent extends React.Component {
     constructor(props) {
         super(props);
-        this.isSignupSucess = this.props.isSignupSucess;
+        this.isSignupSuccess = this.props.isSignupSuccess;
     }
     render() {
         return (
@@ -13,7 +13,7 @@ class SignupSigninRightContent extends React.Component {
                     <div className="signup-signin-right-content-h1">Sign Up</div>
                     <div className="signup-signin-right-content-h2">It is free and always will be</div>
                 </div>
-                <div className="signup-signin-right-content-form"><SignupSigninRightContentForm isSignupSucess={this.props.isSignupSucess} /></div>
+                <div className="signup-signin-right-content-form"><SignupSigninRightContentForm isSignupSucessStateHandler={this.props.isSignupSucessStateHandler} /></div>
             </div>
         );
     }

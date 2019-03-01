@@ -8,22 +8,29 @@ class SignupSignin extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            isSignupSucess: false,
+            isSignupSuccess: false,
         };
+
+        this.updateIsSignupSuccessState = this.updateIsSignupSuccessState.bind(this);
+    }
+    updateIsSignupSuccessState(stateValue) {
+        this.setState({
+            isSignupSuccess: stateValue,
+        });
     }
     render() {
-        const isSignupSucess = this.state.isSignupSucess;
+        const isSignupSuccess = this.state.isSignupSuccess;
         return (
             <div className="signup-signin">
                 <div>
                     <SignupSigninHeader />
                 </div>
-                {isSignupSucess ? (
+                {isSignupSuccess ? (
                     <div>
                         <Alert
                             message="Sign Up Success, you can log in now!"
                             style={{ textAlign: 'center' }}
-                            type="success"
+                            type="info"
                         // showIcon
                             closable />
                     </div>
@@ -36,7 +43,7 @@ class SignupSignin extends Component {
                         <SignupSigninLeftContent />
                     </div>
                     <div className="signup-signin-right-content">
-                        <SignupSigninRightContent isSignupSucess={this.state.isSignupSucess} />
+                        <SignupSigninRightContent isSignupSucessStateHandler={this.updateIsSignupSuccessState} />
                     </div>
                 </div>
             </div>
