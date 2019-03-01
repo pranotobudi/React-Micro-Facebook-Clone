@@ -36,7 +36,7 @@ class SignupSignin extends Component {
                         <SignupSigninLeftContent />
                     </div>
                     <div className="signup-signin-right-content">
-                        <SignupSigninRightContent />
+                        <SignupSigninRightContent isSignupSucess={this.state.isSignupSucess} />
                     </div>
                 </div>
             </div>
