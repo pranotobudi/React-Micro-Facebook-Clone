@@ -166,7 +166,7 @@ module.exports = function (env) {
                 // "process.env": dotenv.parsed
             }),
             new Dotenv({
-                path: './.env.development', // load this now instead of the ones in '.env'
+                path: './.env.production', // load this now instead of the ones in '.env'
             }),
         ],
         /**
