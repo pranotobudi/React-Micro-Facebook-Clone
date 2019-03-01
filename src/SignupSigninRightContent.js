@@ -13,7 +13,7 @@ class SignupSigninRightContent extends React.Component {
                     <div className="signup-signin-right-content-h1">Sign Up</div>
                     <div className="signup-signin-right-content-h2">It is free and always will be</div>
                 </div>
-                <div className="signup-signin-right-content-form"><SignupSigninRightContentForm isSignupSucessStateHandler={this.props.isSignupSucessStateHandler} /></div>
+                <div className="signup-signin-right-content-form"><SignupSigninRightContentForm updateSignupStateHandler={this.props.updateSignupStateHandler} /></div>
             </div>
         );
     }

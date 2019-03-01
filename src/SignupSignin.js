@@ -8,29 +8,33 @@ class SignupSignin extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            isSignupSuccess: false,
+            showSignupAlert: false,
+            signupAlertMessage: 'Sign Up Success, you can log in now!',
+            signupAlertType: 'info',
         };
 
-        this.updateIsSignupSuccessState = this.updateIsSignupSuccessState.bind(this);
+        this.updateSignupStateHandler = this.updateSignupStateHandler.bind(this);
     }
-    updateIsSignupSuccessState(stateValue) {
+    updateSignupStateHandler(showSignupAlertValue, signupAlertMessageValue, signupAlertTypeValue) {
         this.setState({
-            isSignupSuccess: stateValue,
+            showSignupAlert: showSignupAlertValue,
+            signupAlertMessage: signupAlertMessageValue,
+            signupAlertType: signupAlertTypeValue,
         });
     }
     render() {
-        const isSignupSuccess = this.state.isSignupSuccess;
+        const showSignupAlert = this.state.showSignupAlert;
         return (
             <div className="signup-signin">
                 <div>
                     <SignupSigninHeader />
                 </div>
-                {isSignupSuccess ? (
+                {showSignupAlert ? (
                     <div>
                         <Alert
-                            message="Sign Up Success, you can log in now!"
+                            message={this.state.signupAlertMessage}
                             style={{ textAlign: 'center' }}
-                            type="info"
+                            type={this.state.signupAlertType}
                         // showIcon
                             closable />
                     </div>
@@ -43,7 +47,7 @@ class SignupSignin extends Component {
                         <SignupSigninLeftContent />
                     </div>
                     <div className="signup-signin-right-content">
-                        <SignupSigninRightContent isSignupSucessStateHandler={this.updateIsSignupSuccessState} />
+                        <SignupSigninRightContent updateSignupStateHandler={this.updateSignupStateHandler} />
                     </div>
                 </div>
             </div>
