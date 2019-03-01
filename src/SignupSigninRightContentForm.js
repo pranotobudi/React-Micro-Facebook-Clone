@@ -74,7 +74,15 @@ class SignupSigninRightContentForm extends React.Component {
             gender: this.state.gender,
             birthday: this.state.birthday,
         })
-            .then(res => console.log(res))
+            .then((res) => {
+                console.log(res);
+                if (res.status === 201) {
+                    console.log('USER CREATED SUCCESSFULLY');
+                } else {
+                    console.log(`USER SIGN UP FAILED, STATUS CODE:${res.status}`);
+                }
+                // this.props.isSignupSuccess = true;
+            })
             .catch(err => console.error(err));
         // axios.post('http://127.0.0.1:8000/api-token-auth/', {
         //     email: this.state.email,
