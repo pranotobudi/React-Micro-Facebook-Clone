@@ -66,6 +66,11 @@ class SignupSigninRightContentForm extends React.Component {
         console.log(`password: ${this.state.password}`);
         console.log(`gender: ${this.state.gender}`);
         console.log(`birthday: ${this.state.birthday}`);
+        // const self = this;
+        let showSignupAlertValue;
+        let signupAlertMessageValue;
+        let signupAlertTypeValue;
+
         axios.post(process.env.REACT_APP_BACKEND_SERVER_API, {
             firstname: this.state.firstname,
             lastname: this.state.lastname,
@@ -78,12 +83,38 @@ class SignupSigninRightContentForm extends React.Component {
                 console.log(res);
                 if (res.status === 201) {
                     console.log('USER CREATED SUCCESSFULLY');
+                    showSignupAlertValue = true;
+                    signupAlertMessageValue = 'Sign Up Success, you can log in now!';
+                    signupAlertTypeValue = 'info';
+                    this.props.updateSignupStateHandler(
+                        showSignupAlertValue,
+                        signupAlertMessageValue,
+                        signupAlertTypeValue,
+                    );
                 } else {
                     console.log(`USER SIGN UP FAILED, STATUS CODE:${res.status}`);
+                    showSignupAlertValue = true;
+                    signupAlertMessageValue = 'Sign Up Failed!';
+                    signupAlertTypeValue = 'error';
+                    this.props.updateSignupStateHandler(
+                        showSignupAlertValue,
+                        signupAlertMessageValue,
+                        signupAlertTypeValue,
+                    );
                 }
-                // this.props.isSignupSuccess = true;
             })
-            .catch(err => console.error(err));
+            .catch((err) => {
+                console.error(err);
+                console.log('USER SIGN UP FAILED');
+                showSignupAlertValue = true;
+                signupAlertMessageValue = 'Sign Up Failed!';
+                signupAlertTypeValue = 'error';
+                this.props.updateSignupStateHandler(
+                    showSignupAlertValue,
+                    signupAlertMessageValue,
+                    signupAlertTypeValue,
+                );
+            });
         // axios.post('http://127.0.0.1:8000/api-token-auth/', {
         //     email: this.state.email,
         //     password: this.state.password,

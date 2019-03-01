@@ -17,6 +17,9 @@ class SignupSigninHeader extends React.Component {
         this.onChangeEmail = this.onChangeEmail.bind(this);
         this.onChangePassword = this.onChangePassword.bind(this);
     }
+    componentDidMount() {
+        console.log('I was triggered during componentDidMount: SignupSigninHeader');
+    }
     onChangeEmail(e) {
         this.setState({ email: e.target.value });
         console.log(`onChangeEmail: ${e.target.value}`);
@@ -41,9 +44,29 @@ class SignupSigninHeader extends React.Component {
                     this.setState({
                         is_authenticated: true,
                         redirect: true });
+                } else {
+                    console.log('TOKEN UNAVAILABLE');
+                    const showLoginAlertValue = true;
+                    const loginAlertMessageValue = 'Log in Failed, please check again your email and password!';
+                    const loginAlertTypeValue = 'error';
+                    this.props.updateLoginStateHandler(
+                        showLoginAlertValue,
+                        loginAlertMessageValue,
+                        loginAlertTypeValue,
+                    );
                 }
             })
-            .catch(err => console.error(err));
+            .catch((err) => {
+                const showLoginAlertValue = true;
+                const loginAlertMessageValue = 'Log in Failed, please check again your email and password!';
+                const loginAlertTypeValue = 'error';
+                this.props.updateLoginStateHandler(
+                    showLoginAlertValue,
+                    loginAlertMessageValue,
+                    loginAlertTypeValue,
+                );
+                console.error(err);
+            });
     }
 
     renderRedirect() {
