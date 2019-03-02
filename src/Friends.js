@@ -2,7 +2,7 @@
 import React from 'react';
 import 'antd/dist/antd.css';  // or 'antd/dist/antd.less'
 import { Layout } from 'antd';
-import HomeMainContainer from './HomeMainContainer';
+// import HomeMainContainer from './HomeMainContainer';
 import FriendsMainContainer from './FriendsMainContainer';
 import HeaderContainer from './HeaderContainer';
 

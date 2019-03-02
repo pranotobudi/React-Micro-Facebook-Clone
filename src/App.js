@@ -22,10 +22,10 @@ class App extends Component {
             <Router>
                 <div>
                     {/* <div>Bismillah</div> */}
+                    <Route exact path="/pranoto.budi/friends" component={Friends} />
                     <Route exact path="/signup" component={SignupSignin} />
                     <Route exact path="/" component={MainContainer} />
-                    <Route path="/pranoto.budi/friends" component={Friends} />
-                    <Route path="/pranoto.budi" component={Home} />
+                    <Route exact path="/pranoto.budi" component={Home} />
                 </div>
             </Router>
             /* Newsfeed */

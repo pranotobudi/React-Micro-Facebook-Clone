@@ -64,6 +64,15 @@ class SignupSignin extends Component {
                         updateLoginStateHandler={this.updateLoginStateHandler}
                         updateSpinningLoginHandler={this.updateSpinningLoginHandler} />
                 </div>
+                <div>
+                    <Alert
+                        message='if you have not signed up, you can use "email: guest@gmail.com", "password: guest"'
+                        style={{ textAlign: 'center' }}
+                        type="info"
+                        // showIcon
+                        closable
+                        onClose={this.loginAlertOnCloseHandler} />
+                </div>
                 <div
                     style={{ textAlign: 'center' }}>
                     <Spin
