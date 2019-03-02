@@ -239,7 +239,8 @@ class SignupSigninRightContentForm extends React.Component {
                     style={{ justifyContent: 'center', marginTop: '10px' }}>
                     <Spin
                         tip="Loading..."
-                        spinning={this.state.isSpinning} />
+                        spinning={this.state.isSpinning}
+                        size="large" />
                 </div>
             </div>
         );

@@ -31,6 +31,8 @@ class SignupSigninHeader extends React.Component {
     }
 
     onClickLogin() {
+        this.props.updateSpinningLoginHandler(true);
+
         axios.post(process.env.REACT_APP_BACKEND_SERVER_API_AUTH_TOKEN, {
             email: this.state.email,
             password: this.state.password,
@@ -55,6 +57,7 @@ class SignupSigninHeader extends React.Component {
                         loginAlertTypeValue,
                     );
                 }
+                this.props.updateSpinningLoginHandler(false);
             })
             .catch((err) => {
                 const showLoginAlertValue = true;
@@ -66,6 +69,7 @@ class SignupSigninHeader extends React.Component {
                     loginAlertTypeValue,
                 );
                 console.error(err);
+                this.props.updateSpinningLoginHandler(false);
             });
     }
 

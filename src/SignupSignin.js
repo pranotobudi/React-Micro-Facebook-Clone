@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Alert } from 'antd';
+import { Alert, Spin } from 'antd';
 import SignupSigninHeader from './SignupSigninHeader';
 import SignupSigninLeftContent from './SignupSigninLeftContent';
 import SignupSigninRightContent from './SignupSigninRightContent';
@@ -14,12 +14,14 @@ class SignupSignin extends Component {
             showLoginAlert: false,
             loginAlertMessage: 'Log in Failed, please check again your email and password!',
             loginAlertType: 'error',
+            showSpinningLogin: false,
         };
 
         this.updateSignupStateHandler = this.updateSignupStateHandler.bind(this);
         this.updateLoginStateHandler = this.updateLoginStateHandler.bind(this);
         this.loginAlertOnCloseHandler = this.loginAlertOnCloseHandler.bind(this);
         this.signupAlertOnCloseHandler = this.signupAlertOnCloseHandler.bind(this);
+        this.updateSpinningLoginHandler = this.updateSpinningLoginHandler.bind(this);
     }
 
     signupAlertOnCloseHandler() {
@@ -48,13 +50,26 @@ class SignupSignin extends Component {
             loginAlertType: loginAlertTypeValue,
         });
     }
+
+    updateSpinningLoginHandler(showSpinningLoginValue) {
+        this.setState({ showSpinningLogin: showSpinningLoginValue });
+    }
     render() {
         const showSignupAlert = this.state.showSignupAlert;
         const showLoginAlert = this.state.showLoginAlert;
         return (
             <div className="signup-signin">
                 <div>
-                    <SignupSigninHeader updateLoginStateHandler={this.updateLoginStateHandler} />
+                    <SignupSigninHeader
+                        updateLoginStateHandler={this.updateLoginStateHandler}
+                        updateSpinningLoginHandler={this.updateSpinningLoginHandler} />
+                </div>
+                <div
+                    style={{ textAlign: 'center' }}>
+                    <Spin
+                        tip="Loading..."
+                        spinning={this.state.showSpinningLogin}
+                        size="large" />
                 </div>
                 {showSignupAlert ? (
                     <div>
