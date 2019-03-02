@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import { Input, Select, DatePicker } from 'antd';
+import { Input, Select, DatePicker, Spin } from 'antd';
 import { Redirect } from 'react-router-dom';
 
 const Option = Select.Option;
@@ -18,6 +18,7 @@ class SignupSigninRightContentForm extends React.Component {
             birthday: '',
             is_authenticated: false,
             redirect: false,
+            isSpinning: false,
         };
 
         this.onChangeFirstname = this.onChangeFirstname.bind(this);
@@ -71,6 +72,8 @@ class SignupSigninRightContentForm extends React.Component {
         let signupAlertMessageValue;
         let signupAlertTypeValue;
 
+        this.setState({ isSpinning: true });
+
         axios.post(process.env.REACT_APP_BACKEND_SERVER_API, {
             firstname: this.state.firstname,
             lastname: this.state.lastname,
@@ -102,6 +105,7 @@ class SignupSigninRightContentForm extends React.Component {
                         signupAlertTypeValue,
                     );
                 }
+                this.setState({ isSpinning: false });
             })
             .catch((err) => {
                 console.error(err);
@@ -114,6 +118,7 @@ class SignupSigninRightContentForm extends React.Component {
                     signupAlertMessageValue,
                     signupAlertTypeValue,
                 );
+                this.setState({ isSpinning: false });
             });
         // axios.post('http://127.0.0.1:8000/api-token-auth/', {
         //     email: this.state.email,
@@ -228,6 +233,13 @@ class SignupSigninRightContentForm extends React.Component {
                             onClick={this.onClickForm} />
                         {/* style={{ backgroundColor: '#6BA74E', color: 'white', width: 100 }} */}
                     </div>
+                </div>
+                <div
+                    className="signup-signin-right-content-form-row"
+                    style={{ justifyContent: 'center', marginTop: '10px' }}>
+                    <Spin
+                        tip="Loading..."
+                        spinning={this.state.isSpinning} />
                 </div>
             </div>
         );
